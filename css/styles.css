@@ -36,7 +36,7 @@
 
 /* ---------- base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 12px); -webkit-text-size-adjust: 100%; }
+html { overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 12px); -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
   font-family: var(--font);
@@ -54,6 +54,9 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.08; letter-spacing: -0.025em; font-we
 p { margin: 0; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 [hidden] { display: none !important; }
+/* nada (animações de entrada incluídas) pode alargar a página no telemóvel */
+main, .site-footer { overflow-x: clip; }
+.faq, .equipment, .services, .booking { overflow-x: clip; }
 
 :focus-visible { outline: 3px solid var(--vivid); outline-offset: 3px; border-radius: 6px; }
 
