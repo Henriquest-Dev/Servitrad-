@@ -47,7 +47,11 @@ O símbolo em `assets/logotipo/` e o que está inline no `index.html` (cabeçalh
 
 ## Contactos
 
-Os contactos vêm da página pública e estão em `contactos` (`js/content.js`). Enquanto `confirmados: false`, o rodapé mostra "Contactos a confirmar". Depois de validar com a empresa, mude para `true`. O `privacidade.html` e o `<noscript>` do `index.html` também repetem o telefone e o email.
+Os contactos vêm das publicações oficiais da Servitrad e estão em `contactos` (`js/content.js`): WhatsApp +258 84 687 2030, telefone +258 82 386 7105, email servitrad83@gmail.com e a morada na Av. Ahmed Sekou Touré. Com `confirmados: false`, o rodapé volta a mostrar a nota "Contactos a confirmar". O `privacidade.html` e o `<noscript>` do `index.html` também repetem estes contactos.
+
+## Fotografias do equipamento
+
+As imagens em `assets/equipamento/` foram recortadas de capturas de ecrã das publicações da Servitrad no Facebook, por isso têm resolução limitada. Para melhorar a qualidade, substitua cada ficheiro pela fotografia original, com o mesmo nome (formato `.webp` ou `.jpg`, cerca de 900px de largura).
 
 ## Formulário de agendamento
 

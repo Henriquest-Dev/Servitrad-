@@ -11,6 +11,9 @@
     interpretacao: svc('<path d="M4 13v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="12" width="4" height="7" rx="2"/><rect x="17" y="12" width="4" height="7" rx="2"/><path d="M17 20c-1 2-3 2-5 2M14 22h-2"/>'),
     conferencia: svc('<path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Z"/><path d="M5 11v1a7 7 0 0 0 14 0v-1M12 19v3m-4 0h8"/><path d="M3 6v2m18-2v2"/>'),
     videoconferencia: svc('<rect x="3" y="5" width="14" height="14" rx="2"/><path d="m17 10 5-3v10l-5-3M7 9h6M7 13h4"/>'),
+    falar: svc('<path d="M3 5h11v7H8l-3 3v-3H3Z"/><path d="M14 9h7v7h-2v3l-3-3h-4v-2"/>'),
+    transmissao: svc('<circle cx="12" cy="12" r="2"/><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8"/>'),
+    calendario: svc('<rect x="3" y="5" width="16" height="15" rx="2"/><path d="M3 10h16M8 3v4M14 3v4M7 14h3M7 17h6"/>'),
     som: svc('<path d="M4 10v4h4l5 4V6l-5 4H4Z"/><path d="M17 9a5 5 0 0 1 0 6M19 6a9 9 0 0 1 0 12"/><circle cx="5" cy="20" r="1"/>'),
 
     arrow: ui('<path d="M5 12h14M13 6l6 6-6 6"/>'),

@@ -37,6 +37,7 @@
     const grid = $("#services-grid");
     const cols = [document.createElement("div"), document.createElement("div")];
     cols.forEach((c) => (c.className = "services__col"));
+    const weight = [0, 0];
     C.servicos.forEach((s, idx) => {
       const tall = !!s.destaque;
       const btn = document.createElement("button");
@@ -51,7 +52,10 @@
         <p>${esc(s.resumo)}</p>
         <span class="svc-card__more">Ver detalhe ${I.arrow}</span>`;
       btn.addEventListener("click", () => openService(s.id, btn));
-      (idx < 2 ? cols[0] : cols[1]).appendChild(btn);
+      // equilibra as colunas: o cartão alto conta como dois
+      const target = weight[0] <= weight[1] ? 0 : 1;
+      weight[target] += tall ? 2 : 1;
+      cols[target].appendChild(btn);
     });
     grid.append(...cols);
   }
@@ -264,8 +268,11 @@
       if (a) { e.preventDefault(); openService(a.dataset.openService, a); }
     });
     const rows = [];
-    if (k.telefone) rows.push(`<li>${I.phone}<a href="tel:${esc(k.telefoneLink)}">${esc(k.telefone)}</a></li>`);
-    if (k.whatsapp) rows.push(`<li>${I.chat}<a href="https://wa.me/${esc(k.whatsapp)}" target="_blank" rel="noopener">WhatsApp</a></li>`);
+    (k.telefones || []).forEach((t) => {
+      const isWa = /whatsapp/i.test(t.rotulo) && k.whatsapp;
+      const href = isWa ? `https://wa.me/${esc(k.whatsapp)}` : `tel:${esc(t.link)}`;
+      rows.push(`<li>${isWa ? I.chat : I.phone}<a href="${href}"${isWa ? ' target="_blank" rel="noopener"' : ""}><span class="sr-only">${esc(t.rotulo)}: </span>${esc(t.numero)}</a></li>`);
+    });
     if (k.email) rows.push(`<li>${I.mail}<a href="mailto:${esc(k.email)}">${esc(k.email)}</a></li>`);
     if (k.localizacao) rows.push(`<li>${I.pin}<span>${esc(k.localizacao)}</span></li>`);
     if (k.horario) rows.push(`<li><span>${esc(k.horario)}</span></li>`);
