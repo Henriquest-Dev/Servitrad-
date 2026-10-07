@@ -39,6 +39,8 @@ Edite apenas `js/content.js`:
 
 ## Substituir o logótipo
 
+Os ícones seguem o conjunto Lucide (licença ISC), em `js/icons.js`.
+
 O símbolo em `assets/logotipo/` e o que está inline no `index.html` (cabeçalho e rodapé) são uma **reconstrução aproximada**. Quando chegar o ficheiro oficial:
 
 1. Coloque-o em `assets/logotipo/`.
@@ -51,13 +53,13 @@ Os contactos vêm das publicações oficiais da Servitrad e estão em `contactos
 
 ## Fotografias do equipamento
 
-As imagens em `assets/equipamento/` foram recortadas de capturas de ecrã das publicações da Servitrad no Facebook, por isso têm resolução limitada. Para melhorar a qualidade, substitua cada ficheiro pela fotografia original, com o mesmo nome (formato `.webp` ou `.jpg`, cerca de 900px de largura).
+As imagens em `assets/equipamento/` foram recortadas das publicações da Servitrad no Facebook e ampliadas 4× com Real-ESRGAN. Para melhorar a qualidade, substitua cada ficheiro pela fotografia original, com o mesmo nome (formato `.webp` ou `.jpg`, cerca de 900px de largura).
 
 ## Formulário de agendamento
 
 O formulário tem cinco etapas (serviço → data e local → detalhes → contacto → revisão), com validação em cada uma, armadilha anti-spam (campo escondido e tempo mínimo) e os estados do pedido: *Pedido enviado → Em análise → Proposta enviada → Confirmado → Concluído*. Em nenhum momento diz que a data ficou reservada.
 
-- **Sem `formulario.endpoint`** (situação actual): **modo de demonstração**. Aparece um aviso e **nada é guardado**. No fim, o visitante pode enviar o resumo por email ou por WhatsApp.
+- **Sem `formulario.endpoint`** (situação actual): ao enviar, abre-se o WhatsApp da Servitrad com o pedido já escrito. No ecrã final há também um botão para enviar por email.
 - **Com endpoint**: o pedido é enviado por `POST` em JSON para esse URL (Formspree, Netlify Function, backend próprio…). O serviço que recebe deve:
   - enviar ao cliente o email de confirmação de recepção;
   - guardar o pedido com o estado `Pedido enviado`;

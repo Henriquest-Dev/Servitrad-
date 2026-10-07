@@ -55,34 +55,16 @@
   <main id="conteudo">
     <!-- ============ HERO ============ -->
     <section class="hero" id="inicio" aria-labelledby="hero-title">
-      <div class="hero__bg" aria-hidden="true"><span class="hero__beam hero__beam--1"></span><span class="hero__beam hero__beam--2"></span></div>
+      <div class="hero__bg" aria-hidden="true"></div>
       <div class="container hero__inner">
         <h1 class="hero__title" id="hero-title" data-split>Comunicação clara.<br> Eventos bem preparados.</h1>
 
         <div class="hero__stage">
           <div class="hero__deco" aria-hidden="true">
-            <span class="deco deco--bubble" data-depth="0.6" data-float="-40">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h9M8.5 3v2M6 5c0 4 3 7 6 8M11 5c0 4-3 7-6 8"/><path d="m13 21 4-9 4 9M14.5 18h5"/></svg>
-            </span>
-            <span class="deco deco--burst" data-depth="0.35" data-float="-90">
-              <svg viewBox="0 0 100 100"><path d="M50 4 58 36 88 20 66 46 96 56 62 60 74 92 50 68 26 92 38 60 4 56 34 46 12 20 42 36Z" fill="#fff" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></svg>
-            </span>
-            <span class="deco deco--ring deco--ring-1" data-depth="0.9" data-float="-30"></span>
-            <span class="deco deco--ring deco--ring-2" data-depth="0.5" data-float="-120"></span>
-            <span class="deco deco--ring deco--ring-3" data-depth="0.7" data-float="-60"></span>
-            <span class="deco deco--dot" data-depth="0.8" data-float="-70"></span>
-            <span class="deco deco--wave" data-depth="0.45" data-float="-110">
-              <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-            </span>
-            <span class="deco deco--mic" data-depth="0.55" data-float="-50">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Z"/><path d="M5 11v1a7 7 0 0 0 14 0v-1M12 19v3"/></svg>
-            </span>
-            <span class="deco deco--spark" data-depth="0.3" data-float="-140">
-              <svg viewBox="0 0 24 24"><path d="M12 1l2.6 7.4L22 11l-7.4 2.6L12 21l-2.6-7.4L2 11l7.4-2.6Z" fill="currentColor"/></svg>
-            </span>
-            <span class="deco deco--globe" data-depth="0.65" data-float="-80">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg>
-            </span>
+            <span class="chip chip--l1" data-depth="0.5" data-float="-60"><span class="chip__icon" data-icon="traducao"></span><span>Tradução juramentada<small>Tradutores ajuramentados</small></span></span>
+            <span class="chip chip--r1" data-depth="0.5" data-float="-60"><span class="chip__icon" data-icon="falar"></span><span>Interpretação simultânea<small>e consecutiva</small></span></span>
+            <span class="chip chip--l2" data-depth="0.8" data-float="-110"><span class="chip__icon" data-icon="interpretacao"></span><span>Cabines e headsets<small>Equipamento de interpretação</small></span></span>
+            <span class="chip chip--r2" data-depth="0.8" data-float="-110"><span class="chip__icon" data-icon="som"></span><span>Som, palco e iluminação<small>Conferências e eventos</small></span></span>
           </div>
 
           <div class="hero__orb" data-hero-orb>
@@ -108,13 +90,15 @@
 
     <!-- ============ SERVIÇOS ============ -->
     <section class="section services" id="servicos" aria-labelledby="servicos-title">
-      <div class="container services__inner">
-        <div class="services__intro" data-reveal>
-          <h2 class="section-title" id="servicos-title" data-split>Os nossos serviços</h2>
-          <p>Traduzimos e interpretamos para o seu mundo. Da tradução juramentada de um documento à montagem completa de uma conferência ou casamento — mais que palavras, ligamos pessoas e negócios.</p>
-          <a class="btn btn--dark" href="#agendar">Pedir orçamento</a>
+      <div class="container">
+        <div class="services__grid" id="services-grid">
+          <div class="services__intro" data-reveal>
+            <h2 class="section-title" id="servicos-title" data-split>Os nossos serviços</h2>
+            <p>Traduzimos e interpretamos para o seu mundo. Da tradução juramentada de um documento à montagem completa de uma conferência ou casamento.</p>
+            <a class="btn btn--dark" href="#agendar">Pedir orçamento</a>
+          </div>
+          <!-- cartões preenchidos por main.js -->
         </div>
-        <div class="services__grid" id="services-grid"><!-- preenchido por main.js --></div>
       </div>
     </section>
 
@@ -168,9 +152,6 @@
         </div>
 
         <div class="booking__card" data-reveal>
-          <div class="demo-banner" id="demo-banner" role="note" hidden>
-            <strong>Modo de demonstração:</strong> o envio online ainda não está configurado, por isso os pedidos <u>não são guardados</u>. No fim pode enviar o resumo por email ou WhatsApp.
-          </div>
 
           <ol class="stepper" id="stepper" aria-label="Progresso do pedido"></ol>
 

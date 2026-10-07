@@ -35,14 +35,10 @@
   /* ---------- SERVIÇOS ---------- */
   function renderServices() {
     const grid = $("#services-grid");
-    const cols = [document.createElement("div"), document.createElement("div")];
-    cols.forEach((c) => (c.className = "services__col"));
-    const weight = [0, 0];
     C.servicos.forEach((s, idx) => {
-      const tall = !!s.destaque;
       const btn = document.createElement("button");
       btn.type = "button";
-      btn.className = "svc-card" + (tall ? " svc-card--tall svc-card--featured" : "");
+      btn.className = "svc-card" + (s.destaque ? " svc-card--featured" : "");
       btn.style.setProperty("--i", idx);
       btn.dataset.service = s.id;
       btn.setAttribute("aria-haspopup", "dialog");
@@ -52,12 +48,8 @@
         <p>${esc(s.resumo)}</p>
         <span class="svc-card__more">Ver detalhe ${I.arrow}</span>`;
       btn.addEventListener("click", () => openService(s.id, btn));
-      // equilibra as colunas: o cartão alto conta como dois
-      const target = weight[0] <= weight[1] ? 0 : 1;
-      weight[target] += tall ? 2 : 1;
-      cols[target].appendChild(btn);
+      grid.appendChild(btn);
     });
-    grid.append(...cols);
   }
 
   /* ---------- diálogo de detalhe ---------- */
@@ -300,11 +292,12 @@
     let current = 0;
     let startedAt = Date.now();
 
-    if (!endpoint) $("#demo-banner").hidden = false;
+    // sem servidor configurado, o pedido segue pelo WhatsApp (mensagem já preenchida)
+    if (!endpoint) btnSubmit.textContent = "Enviar pedido por WhatsApp";
 
     $("#service-choices").innerHTML = C.servicos.map((s) => `
       <label class="choice"><input type="radio" name="servico" value="${esc(s.titulo)}" data-id="${esc(s.id)}" required>${I[s.icone] || ""}<span>${esc(s.titulo)}</span></label>`).join("") +
-      `<label class="choice"><input type="radio" name="servico" value="Vários serviços / outro" data-id="outro">${I.conferencia}<span>Vários serviços ou outro</span></label>`;
+      `<label class="choice"><input type="radio" name="servico" value="Vários serviços / outro" data-id="outro">${I.outro}<span>Vários serviços ou outro</span></label>`;
 
     stepper.innerHTML = labels.map((l, i) => `<li${i === 0 ? ' class="is-active" aria-current="step"' : ""}>${l}</li>`).join("");
 
@@ -453,10 +446,12 @@
       const ref = reference();
 
       if (!endpoint) {
+        const k = C.contactos;
+        if (k.whatsapp) window.open(`https://wa.me/${k.whatsapp}?text=${encodeURIComponent(summaryText(d, ref))}`, "_blank", "noopener");
         showResult(`
-          <span class="form-result__icon form-result__icon--warn">${I.mail}</span>
-          <h3>O pedido ainda não foi enviado</h3>
-          <p>O envio online está em modo de demonstração e <strong>nada foi guardado</strong>. Para concluir, envie o resumo (referência <strong>${esc(ref)}</strong>) por um dos canais abaixo.</p>
+          <span class="form-result__icon">${I.chat}</span>
+          <h3>Falta só enviar a mensagem</h3>
+          <p>Abrimos o WhatsApp com o seu pedido já escrito (referência <strong>${esc(ref)}</strong>). Carregue em enviar para o recebermos. Se a janela não abriu, ou se prefere email, use um dos botões abaixo.</p>
           <div class="form-result__actions">${fallbackButtons(d, ref)}</div>
           <p><button class="btn btn--ghost" type="button" data-restart>Fazer outro pedido</button></p>`);
         return;
@@ -538,7 +533,7 @@
   function initReveal() {
     if (!motionOK) return;
     const targets = [
-      ...$$("[data-reveal]"), ...$$(".services__col"), ...$$(".eq-card"),
+      ...$$("[data-reveal]"), $("#services-grid"), ...$$(".eq-card"),
       $(".steps"), $("#faq-list"), $("#articles-grid"),
       ...$$("[data-split]").filter((el) => !el.closest(".hero")),
     ].filter(Boolean);
@@ -561,7 +556,8 @@
 
   function initHero() {
     const hero = $(".hero");
-    const decos = $$(".hero__deco .deco");
+    const decos = $$(".hero__deco .chip");
+    decos.forEach((d) => { const ic = I[d.firstElementChild.dataset.icon]; if (ic) d.firstElementChild.innerHTML = ic; });
     decos.forEach((d, i) => d.style.setProperty("--d", i));
     const title = $(".hero__title");
     const ready = () => { hero.classList.add("is-ready"); title.classList.add("is-split-in"); };
@@ -590,11 +586,11 @@
       my += (ty - my) * 0.12;
       const p = Math.min(1, Math.max(0, scrollY / Math.max(1, hero.offsetHeight)));
       // a ilustração "ganha presença" ao descer: cresce ligeiramente e roda pouco
-      orb.style.transform = `translate3d(${mx * 14}px, ${p * 70 + my * 10}px, 0) scale(${1 + p * 0.14}) rotate(${p * -5 + mx * 2}deg)`;
+      orb.style.transform = `translate3d(${mx * 14}px, ${p * 70 + my * 10}px, 0) scale(${1 + p * 0.12})`;
       decos.forEach((d) => {
         const depth = parseFloat(d.dataset.depth || 0.5);
         const float = parseFloat(d.dataset.float || -60);
-        d.style.transform = `translate3d(${mx * depth * 46}px, ${p * float + my * depth * 34}px, 0) rotate(${p * float * 0.25}deg)`;
+        d.style.transform = `translate3d(${mx * depth * 30}px, ${p * float + my * depth * 22}px, 0)`;
       });
       if (Math.abs(tx - mx) > 0.002 || Math.abs(ty - my) > 0.002) tick();
     }
