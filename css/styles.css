@@ -231,6 +231,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .eq-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--royal); }
 .eq-card__media { position: relative; aspect-ratio: 16 / 10; display: grid; place-items: center; background: radial-gradient(circle at 70% 30%, rgba(39,196,232,.35), transparent 55%), linear-gradient(140deg, var(--tint), #D7EAF7); overflow: hidden; }
 .eq-card__media img { width: 100%; height: 100%; object-fit: cover; }
+.eq-card__media:has(img) { background: #E9EEF3; }
+.eq-card__media:has(img)::after { display: none; }
+.eq-card__media img { transition: transform .6s var(--ease); }
+.eq-card:hover .eq-card__media img { transform: scale(1.05); }
 .eq-card__media .svc-icon { width: 84px; height: 84px; color: var(--royal); transition: transform .5s var(--ease); }
 .eq-card:hover .eq-card__media .svc-icon { transform: scale(1.08) rotate(-4deg); }
 .eq-card__media::after { content: ""; position: absolute; width: 120px; aspect-ratio: 1; border-radius: 50%; background: rgba(0,169,214,.18); left: -30px; bottom: -40px; }

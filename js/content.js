@@ -7,26 +7,28 @@
    Regras de publicação (ver README.md):
    • Itens com `publicado: false` não aparecem no site.
    • Itens com `exemplo: true` aparecem com a etiqueta "Exemplo".
-   • Nada aqui deve afirmar idiomas, certificações, marcas, tarifas ou prazos
-     que a Servitrad não tenha confirmado por escrito.
+   • Fonte dos dados: publicações oficiais da Servitrad (Facebook, 2024–2025).
    ========================================================================== */
 
 window.SERVITRAD = {
   empresa: {
-    nome: "Servitrad, Lda",           // VALIDAR nome legal
+    nome: "Servitrad, Lda",
     assinatura: "Serviços & Traduções",
+    slogan: "Mais que palavras, ligamos pessoas e negócios.",
     ano: new Date().getFullYear(),
   },
 
-  /* Contactos vistos na página pública. VALIDAR com a empresa antes de publicar.
-     Enquanto `confirmados` for false, o rodapé mostra a nota "a confirmar". */
+  /* Contactos das publicações oficiais da Servitrad.
+     Com `confirmados: false`, o rodapé mostra a nota "a confirmar". */
   contactos: {
-    confirmados: false,
-    telefone: "+258 84 687 2030",
-    telefoneLink: "+258846872030",
+    confirmados: true,
+    telefones: [
+      { rotulo: "WhatsApp", numero: "+258 84 687 2030", link: "+258846872030" },
+      { rotulo: "Telefone", numero: "+258 82 386 7105", link: "+258823867105" },
+    ],
     whatsapp: "258846872030",          // só dígitos, com indicativo
-    email: "servitrad@hotmail.com",
-    localizacao: "Mateque, Maning, Marracuene — Moçambique",
+    email: "servitrad83@gmail.com",
+    localizacao: "Av. Ahmed Sekou Touré — Moçambique",
     horario: "",                       // ex.: "Seg–Sex, 08:00–17:00" (a fornecer)
     redes: [
       { nome: "Facebook", url: "https://www.facebook.com/servitradlda/" },
@@ -45,45 +47,63 @@ window.SERVITRAD = {
     tempoMinimoSegundos: 4,            // anti-spam: envios mais rápidos são rejeitados
   },
 
+  /* Ordem = ordem no site. `destaque: true` → cartão alto e escuro. */
   servicos: [
     {
       id: "traducao",
       icone: "traducao",
       titulo: "Tradução de documentos",
-      resumo: "Textos traduzidos com cuidado para comunicar sem ambiguidades.",
+      resumo: "Tradução juramentada por tradutores ajuramentados, em diversos idiomas.",
       detalhe:
-        "Tradução de documentos para empresas, instituições e particulares. Envie-nos o tipo de documento e a finalidade e preparamos uma proposta.",
+        "Traduzimos os seus documentos com confiança e sem perder nenhum detalhe. A nossa equipa de tradutores certificados e ajuramentados trata documentos pessoais, académicos, jurídicos, comerciais e técnicos.",
       pontos: [
-        "Pedido de orçamento sem compromisso",
-        "Análise do tipo de documento e da finalidade",
-        "Idiomas, prazos e certificações: indicados na proposta",
+        "Documentos pessoais: passaporte, BI, certidão de casamento, assento de nascimento, registo criminal, permissão de viagem",
+        "Certificados e diplomas (tradução juramentada)",
+        "Tradução empresarial: propostas, contratos, relatórios e manuais",
+        "Documentos jurídicos, académicos, comerciais e técnicos",
       ],
     },
     {
       id: "interpretacao",
-      icone: "interpretacao",
+      icone: "falar",
       destaque: true,
-      titulo: "Interpretação de conferências",
-      resumo: "Interpretação simultânea para que cada participante acompanhe o evento.",
+      titulo: "Interpretação simultânea e consecutiva",
+      resumo: "Intérpretes profissionais e qualificados para reuniões, conferências e eventos.",
       detalhe:
-        "Interpretação para conferências, reuniões e eventos. Avaliamos o formato, o número de participantes e o equipamento necessário para a sala.",
+        "Interpretação simultânea e consecutiva para reuniões, conferências e eventos, com intérpretes profissionais e qualificados. Podemos fornecer também todo o equipamento de interpretação.",
       pontos: [
-        "Análise do programa e do formato do evento",
-        "Coordenação com o equipamento de interpretação",
-        "Idiomas disponíveis confirmados caso a caso",
+        "Interpretação simultânea e consecutiva",
+        "Reuniões, conferências, seminários e eventos",
+        "Diversos idiomas e áreas de actuação",
+        "Equipamento de interpretação incluído quando necessário",
       ],
     },
     {
       id: "equipamento",
-      icone: "conferencia",
-      titulo: "Aluguer de equipamento áudio",
-      resumo: "Microfones, sistemas de interpretação e som para conferências e eventos.",
+      icone: "interpretacao",
+      titulo: "Aluguer de equipamento de interpretação",
+      resumo: "Cabines, headsets, receptores e microfones de conferência.",
       detalhe:
-        "Aluguer de equipamento áudio para conferências e de som para eventos. A disponibilidade e a configuração são confirmadas após análise do pedido.",
+        "Alugamos o equipamento para interpretação simultânea e conferências, com montagem na sala.",
       pontos: [
-        "Equipamento para conferências e eventos",
-        "Montagem e apoio técnico a combinar",
-        "Disponibilidade sujeita a confirmação",
+        "Cabines de interpretação",
+        "Headsets e receptores para os participantes",
+        "Microfones de conferência para oradores e delegados",
+        "Montagem e apoio técnico no evento",
+      ],
+    },
+    {
+      id: "som",
+      icone: "som",
+      titulo: "Som, palco e iluminação para eventos",
+      resumo: "Tudo para conferências, casamentos e eventos — num só lugar.",
+      detalhe:
+        "Venha alugar tudo aqui: faça do seu evento, casamento ou conferência um momento memorável, com equipamento de alta qualidade.",
+      pontos: [
+        "Line arrays (“linners”) e subwoofers",
+        "Microfones sem fio e mesas de mistura",
+        "Palco modular e estruturas",
+        "Iluminação LED e gerador de energia",
       ],
     },
     {
@@ -92,38 +112,57 @@ window.SERVITRAD = {
       titulo: "Videoconferência",
       resumo: "Ligue participantes remotos à sala com som e imagem claros.",
       detalhe:
-        "Soluções de videoconferência para reuniões e eventos híbridos, integradas com o áudio da sala quando necessário.",
+        "Soluções de videoconferência para reuniões e eventos híbridos, com ecrãs e integração com o som da sala.",
       pontos: [
         "Reuniões presenciais, remotas ou híbridas",
-        "Integração com o som da sala",
-        "Requisitos técnicos avaliados no pedido",
+        "Ecrãs e integração com o som da sala",
+        "Pode ser combinada com interpretação",
       ],
     },
     {
       id: "transmissao",
-      icone: "som",
+      icone: "transmissao",
       titulo: "Transmissão ao vivo",
-      resumo: "Leve o seu evento a quem não pode estar presente.",
+      resumo: "Som e imagem para levar o seu evento a quem não pode estar presente.",
       detalhe:
-        "Transmissões ao vivo de conferências e eventos. Definimos consigo a plataforma, o local e as necessidades técnicas.",
+        "Transmissões ao vivo de conferências e eventos. Definimos consigo a plataforma, o local e as necessidades de som e imagem.",
       pontos: [
+        "Captação de som e imagem",
         "Planeamento conforme o local e a plataforma",
-        "Captação de som para transmissão",
         "Proposta adaptada ao evento",
+      ],
+    },
+    {
+      id: "eventos",
+      icone: "calendario",
+      titulo: "Organização e gestão de eventos",
+      resumo: "Coordenamos a parte técnica e linguística do seu evento.",
+      detalhe:
+        "Organizamos e gerimos eventos: do equipamento de som e imagem à interpretação, tratamos de tudo para que o evento corra bem.",
+      pontos: [
+        "Planeamento técnico do evento",
+        "Som, imagem, palco e energia",
+        "Interpretação e tradução no mesmo pedido",
       ],
     },
   ],
 
-  /* Catálogo de equipamento. Até a Servitrad fornecer o inventário real,
-     todos os itens são DEMONSTRATIVOS (exemplo: true). Para cada item real:
-     remova `exemplo`, ajuste o texto e acrescente `imagem: "assets/equipamento/ficheiro.webp"`. */
+  /* Catálogo de equipamento com fotografias das publicações da Servitrad.
+     Para substituir uma imagem, coloque o ficheiro em assets/equipamento/
+     e actualize `imagem`. Use `exemplo: true` para itens demonstrativos. */
   equipamento: [
-    { categoria: "Interpretação", icone: "interpretacao", nome: "Sistema de interpretação simultânea", texto: "Cabina, consolas e receptores para os participantes.", exemplo: true },
-    { categoria: "Interpretação", icone: "interpretacao", nome: "Receptores com auscultadores", texto: "Para os participantes acompanharem a interpretação.", exemplo: true },
-    { categoria: "Conferências", icone: "conferencia", nome: "Sistema de microfones de conferência", texto: "Microfones de mesa para oradores e delegados.", exemplo: true },
-    { categoria: "Conferências", icone: "conferencia", nome: "Microfones sem fios", texto: "De mão ou de lapela, para palco e perguntas do público.", exemplo: true },
-    { categoria: "Som", icone: "som", nome: "Sistema de som para eventos", texto: "Colunas e mesa de mistura dimensionadas para o espaço.", exemplo: true },
-    { categoria: "Vídeo", icone: "videoconferencia", nome: "Kit de videoconferência", texto: "Câmara, áudio e ligação para participantes remotos.", exemplo: true },
+    { categoria: "Interpretação", icone: "interpretacao", imagem: "assets/equipamento/cabine-interpretacao.webp", nome: "Cabine de interpretação", texto: "Cabine para os intérpretes, montada na sala do evento." },
+    { categoria: "Interpretação", icone: "interpretacao", imagem: "assets/equipamento/receptores-auscultadores.webp", nome: "Headsets e receptores", texto: "Para os participantes acompanharem a interpretação simultânea." },
+    { categoria: "Interpretação", icone: "interpretacao", imagem: "assets/equipamento/montagem-interpretacao.webp", nome: "Consolas de interpretação", texto: "Consola e microfone para cada intérprete." },
+    { categoria: "Conferências", icone: "conferencia", imagem: "assets/equipamento/microfones-conferencia.webp", nome: "Sistema de microfones de conferência", texto: "Microfones de mesa para oradores e delegados, com unidade central." },
+    { categoria: "Conferências", icone: "conferencia", imagem: "assets/equipamento/microfone-delegado.webp", nome: "Microfone de delegado", texto: "Unidade de mesa com microfone de haste flexível." },
+    { categoria: "Conferências", icone: "videoconferencia", imagem: "assets/equipamento/montagem-videoconferencia.webp", nome: "Ecrãs e videoconferência", texto: "Ecrãs em tripé e equipamento para reuniões híbridas." },
+    { categoria: "Som", icone: "som", imagem: "assets/equipamento/mesa-receptores.webp", nome: "Microfones sem fio e mesa de mistura", texto: "Receptores sem fio, mesa de mistura e amplificação." },
+    { categoria: "Som", icone: "som", imagem: "assets/equipamento/montagem-sala.webp", nome: "Som para salas e conferências", texto: "Colunas em tripé e montagem completa na sala." },
+    { categoria: "Som", icone: "som", imagem: "assets/equipamento/palco-subwoofers.webp", nome: "Line arrays e subwoofers", texto: "Sistemas de som de grande potência para eventos ao ar livre." },
+    { categoria: "Palco e iluminação", icone: "calendario", imagem: "assets/equipamento/palco-line-array.webp", nome: "Palco modular", texto: "Palco e estrutura de truss com som e luz suspensos." },
+    { categoria: "Palco e iluminação", icone: "calendario", imagem: "assets/equipamento/iluminacao-led.webp", nome: "Iluminação LED", texto: "Projectores LED e moving heads para palco e festas." },
+    { categoria: "Energia", icone: "calendario", imagem: "assets/equipamento/gerador-energia.webp", nome: "Gerador de energia", texto: "Gerador móvel para eventos sem rede eléctrica estável." },
   ],
 
   /* Faixa "Como funciona". */
@@ -134,11 +173,21 @@ window.SERVITRAD = {
     { titulo: "Confirmação", quem: "Servitrad", texto: "A data só fica reservada depois da confirmação da Servitrad. Até lá, o pedido é uma solicitação." },
   ],
 
-  /* FAQ — respostas a VALIDAR com a empresa. Coloque `publicado: false` para esconder. */
+  /* FAQ — coloque `publicado: false` para esconder uma pergunta. */
   faq: [
     {
       pergunta: "Como peço um orçamento?",
-      resposta: "Preencha o formulário “Agendar serviço” nesta página ou contacte-nos por telefone, WhatsApp ou email. Indique o serviço, a data e o local para prepararmos a proposta.",
+      resposta: "Preencha o formulário “Agendar serviço” nesta página ou contacte-nos por WhatsApp (+258 84 687 2030), telefone (+258 82 386 7105) ou email (servitrad83@gmail.com). Indique o serviço, a data e o local para prepararmos a proposta.",
+      publicado: true,
+    },
+    {
+      pergunta: "Fazem tradução juramentada?",
+      resposta: "Sim. Trabalhamos com tradutores ajuramentados para certificados, diplomas, certidões e outros documentos que precisem de tradução juramentada.",
+      publicado: true,
+    },
+    {
+      pergunta: "Que idiomas traduzem?",
+      resposta: "Trabalhamos com diversos idiomas e áreas de actuação. Indique no pedido de que língua e para que língua precisa e confirmamos na proposta.",
       publicado: true,
     },
     {
@@ -147,18 +196,13 @@ window.SERVITRAD = {
       publicado: true,
     },
     {
-      pergunta: "Que equipamento posso alugar?",
-      resposta: "Trabalhamos com equipamento áudio para conferências, som para eventos, videoconferência e transmissão ao vivo. A configuração exacta depende do espaço e do número de participantes e é indicada na proposta.",
+      pergunta: "Alugam equipamento para casamentos e festas?",
+      resposta: "Sim. Para além de conferências, alugamos som, palco modular, iluminação LED, microfones sem fio e gerador de energia para casamentos e outros eventos.",
       publicado: true,
     },
     {
       pergunta: "A interpretação pode ser combinada com o aluguer de equipamento?",
-      resposta: "Sim. Pode pedir interpretação e equipamento no mesmo pedido; analisamos tudo em conjunto para a sala e o formato do evento.",
-      publicado: true,
-    },
-    {
-      pergunta: "Com quanta antecedência devo fazer o pedido?",
-      resposta: "Quanto mais cedo, melhor: assim é mais fácil garantir equipa e equipamento. O prazo para cada serviço é indicado na proposta.",
+      resposta: "Sim. Pode pedir intérpretes, cabines, headsets e microfones no mesmo pedido; analisamos tudo em conjunto para a sala e o formato do evento.",
       publicado: true,
     },
   ],
