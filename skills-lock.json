@@ -151,6 +151,12 @@
       "skillPath": "skills/config-codex-cli/SKILL.md",
       "computedHash": "331a102c0a453f313f7f1d99babcc22770f646f6081b323d7f9738935ef32cba"
     },
+    "design-mobile-apps": {
+      "source": "designed-by-ai/skills",
+      "sourceType": "github",
+      "skillPath": "skills/design-mobile-apps/SKILL.md",
+      "computedHash": "6d6ed68c53ac9f5564aea489ededb387b8cdf29ffa6f78f2a1fa449f86f19e16"
+    },
     "find-skills": {
       "source": "vercel-labs/skills",
       "sourceType": "github",
